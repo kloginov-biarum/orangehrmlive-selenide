@@ -1,4 +1,4 @@
-package test.java;
+
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
@@ -6,10 +6,10 @@ import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import main.java.DashboardPage;
-import main.java.LoginPage;
+
 import main.java.ResetPasswordPage;
 import org.junit.Test;
-import test.java.BaseTest;
+
 
 import java.time.Duration;
 
@@ -22,6 +22,7 @@ public class LoginTests extends BaseTest {
     @Test
     public void successLogin(){
         //Configuration.browser = "safari";
+        Configuration.reportsFolder = "target/reports";
         open("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(false));
         loginPage.enterUsername("Admin");

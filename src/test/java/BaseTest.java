@@ -1,5 +1,5 @@
-package test.java;
-import main.java.*;
+
+
 import com.codeborne.selenide.Configuration;
 
 
