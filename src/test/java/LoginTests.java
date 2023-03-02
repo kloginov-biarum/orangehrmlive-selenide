@@ -5,9 +5,7 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
-import main.java.DashboardPage;
 
-import main.java.ResetPasswordPage;
 import org.junit.Test;
 
 
@@ -18,13 +16,12 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 
-public class LoginTests extends BaseTest {
+public class LoginTests {
     @Test
     public void successLogin(){
-        //Configuration.browser = "safari";
-        Configuration.reportsFolder = "target/reports";
+
         open("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(false));
+        LoginPage loginPage = new LoginPage();
         loginPage.enterUsername("Admin");
         loginPage.enterPassword("admin123");
         loginPage.clickOnLoginButton();
@@ -32,7 +29,7 @@ public class LoginTests extends BaseTest {
         dashboardPage.dashboardPageIsOpen();
     }
 
-
+    @Test
     public void elementsAreVisible(){
         open("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
         LoginPage loginPage = new LoginPage();
@@ -41,7 +38,7 @@ public class LoginTests extends BaseTest {
         loginPage.credSectionIsDisplayed();
     }
 
-
+    @Test
     public void forgotYourPasswordLink(){
         open("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
         LoginPage loginPage = new LoginPage();
