@@ -51,7 +51,11 @@ public class LoginPage {
         forgotYourPassword.click();
     }
 
-
+    public void successLogin(String userNameValue, String passwordValue){
+        enterUsername(userNameValue);
+        enterPassword(passwordValue);
+        clickOnLoginButton();
+    }
 
 
 

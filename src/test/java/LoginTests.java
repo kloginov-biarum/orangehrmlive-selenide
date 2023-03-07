@@ -7,6 +7,8 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
+
 
 
 import java.time.Duration;
@@ -16,23 +18,18 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 
-public class LoginTests {
-    @Test
-    public void successLogin(){
+public class LoginTests extends BaseTest{
 
-        open("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
-        LoginPage loginPage = new LoginPage();
+    public void successLogin(){
         loginPage.enterUsername("Admin");
         loginPage.enterPassword("admin123");
         loginPage.clickOnLoginButton();
-        DashboardPage dashboardPage = new DashboardPage();
         dashboardPage.dashboardPageIsOpen();
     }
 
+
     @Test
     public void elementsAreVisible(){
-        open("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
-        LoginPage loginPage = new LoginPage();
         loginPage.logoIsDisplayed();
         loginPage.logoImageIsCorrect();
         loginPage.credSectionIsDisplayed();
@@ -40,11 +37,9 @@ public class LoginTests {
 
     @Test
     public void forgotYourPasswordLink(){
-        open("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
-        LoginPage loginPage = new LoginPage();
         loginPage.followTheForgotPasswordLink();
-        ResetPasswordPage resetPasswordPage = new ResetPasswordPage();
         resetPasswordPage.resetPasswordButtonIsDisplayed();
+        resetPasswordPage.urlIsCorrect();
     }
 
 
